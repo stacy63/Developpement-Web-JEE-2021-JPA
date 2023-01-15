@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<body>
+
+<h1>Nouvelle tâche</h1>
+
+<form id="pro_form" method="post" th:object="${note}" th:action="@{/tasks}" >
+    <p><input type="text" size="2" th:field="*{content}">
+        <input type="text" size="2" th:field="*{category.name}">
+        <input name="valider" type="submit" value="Ok"></p>
+</form>
+
+</body>
+</html>

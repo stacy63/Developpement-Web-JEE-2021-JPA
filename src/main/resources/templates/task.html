@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<html>
+<body>
+
+<h1>Tâche à faire</h1>
+
+<div th:object="${task}" >
+    <div th:text="*{category.name}"></div>
+    <div th:text="*{content}"></div>
+    <div th:text="*{creationDate}"></div>
+    <div th:text="*{endDate}"></div>
+</div>
+
+<form id="pro_form" th:object="${task}" th:data-id="${task.id}" >
+    <p><input id="btn" type="submit" value="supprimer"></p>
+</form>
+
+<script>
+    var supp = document.getElementById("btn");
+    var task = document.getElementById("pro_form")
+
+    var myHeaders = new Headers();
+
+    var myInit = { method: 'DELETE',
+               headers: myHeaders,
+               mode: 'cors',
+               cache: 'default' };
+
+    supp.addEventListener("click", function(event) {
+        fetch('/tasks/' + task.dataset.id ,myInit)
+        .then(function(response) {
+        console.log(response.ok);
+        //document.location.href = "/tasks";
+        }).catch(function(e) { console.log("error") });
+    });
+
+</script>
+
+</body>
+</html>

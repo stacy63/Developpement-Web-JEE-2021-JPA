@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<html>
+<head>
+    <title>Liste des tâches</title>
+</head>
+<body>
+
+<h1>Tâches à faire</h1>
+
+<div th:each="t : ${tasks}" th:if="${tasks.size()>0}" >
+    <div th:text="${t.category.name}"></div>
+    <div th:text="${t.content}"></div>
+    <div th:text="${t.creationDate}"></div>
+    <div th:text="${t.endDate}"></div>
+    <div th:text="${t.id}"></div>
+
+</div>
+
+
+</body>
+</html>
